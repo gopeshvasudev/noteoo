@@ -1,6 +1,10 @@
 import express from "express";
 
-import { signinHandler, signupHandler } from "../controllers/auth.controllers.js";
+import {
+  refreshTokenHandler,
+  signinHandler,
+  signupHandler,
+} from "../controllers/auth.controllers.js";
 
 const router = express.Router();
 
@@ -9,5 +13,8 @@ router.post("/signup", signupHandler);
 
 //Sign in
 router.post("/signin", signinHandler);
+
+//Refresh token
+router.post("/refresh-token", refreshTokenHandler);
 
 export default router;
