@@ -6,6 +6,7 @@ import "./index.css";
 import App from "./App.jsx";
 
 const Home = lazy(() => import("./pages/Home.jsx"));
+const Authenticate = lazy(() => import("./pages/Authenticate.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/authenticate",
+    element: (
+      <Suspense fallback={<h1>Loading....</h1>}>
+        <Authenticate />
+      </Suspense>
+    ),
   },
 ]);
 
