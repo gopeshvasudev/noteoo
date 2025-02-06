@@ -7,7 +7,7 @@ import userModel from "../models/user.models.js";
 const authenticateUser = async (req, res, next) => {
   try {
     //Getting the token from the header
-    const authHeader = req.headers("Authorization");
+    const authHeader = req.header("Authorization");
 
     //Checking if the token starts with bearer or not
     if (!authHeader || !authHeader.startsWith("Bearer")) {
