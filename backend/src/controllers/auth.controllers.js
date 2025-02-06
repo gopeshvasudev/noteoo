@@ -62,7 +62,7 @@ const signupHandler = async (req, res) => {
       });
   } catch (error) {
     console.error("Signup user error: " + error.message);
-    errorHandler(res, error.statusCode, error.message);
+    return errorHandler(res, error.statusCode, error.message);
   }
 };
 
@@ -104,7 +104,7 @@ const signinHandler = async (req, res) => {
       });
   } catch (error) {
     console.error("Signin user error: " + error.message);
-    errorHandler(res, error.statusCode, error.message);
+    return errorHandler(res, error.statusCode, error.message);
   }
 };
 
@@ -138,4 +138,20 @@ const refreshTokenHandler = async (req, res) => {
   }
 };
 
-export { signupHandler, signinHandler, refreshTokenHandler };
+const logoutHandler = (req, res) => {
+  try {
+    const isCookieCleared = res.clearCookie("token");
+
+    if (isCookieCleared) {
+      return res.status(200).json({
+        success: true,
+        message: "Logged out successfully",
+      });
+    }
+  } catch (error) {
+    console.error("Logout handler error: ", error.message);
+    return errorHandler(res, error.statusCode, error.message);
+  }
+};
+
+export { signupHandler, signinHandler, refreshTokenHandler, logoutHandler };
