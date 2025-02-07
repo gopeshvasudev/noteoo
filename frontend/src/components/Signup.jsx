@@ -24,11 +24,11 @@ const Signup = () => {
       className="w-full sm:w-[600px] p-4 bg-noteoo-200 rounded-lg flex flex-col gap-4 tracking-wider shadow-xl"
     >
       <div className="mb-5">
-        <h2 className="text-xl text-center">Sign up and Start noting with</h2>
-
-        <h1 className="text-5xl text-center font-[gilroy-bold] leading-[.8]">
-          Noteoo.
+        <h1 className="text-5xl text-center font-[gilroy-bold] mb-1">
+          Noteoo
         </h1>
+
+        <h2 className="text-lg text-center leading-[1.1] text-zinc-700">Sign up and start capturing ideas!</h2>
       </div>
 
       <input
