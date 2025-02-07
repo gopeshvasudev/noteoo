@@ -1,8 +1,17 @@
-import React from "react";
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 
 const Home = () => {
   return (
-    <div>Homepage</div>
+    <>
+      <Header />
+
+      <div className="w-full h-[90vh] flex">
+        <Sidebar />
+
+        <main className="flex-1"></main>
+      </div>
+    </>
   );
 };
 

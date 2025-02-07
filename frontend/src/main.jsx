@@ -23,15 +23,15 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "/authenticate",
+        element: (
+          <Suspense fallback={<h1>Loading....</h1>}>
+            <Authenticate />
+          </Suspense>
+        ),
+      },
     ],
-  },
-  {
-    path: "/authenticate",
-    element: (
-      <Suspense fallback={<h1>Loading....</h1>}>
-        <Authenticate />
-      </Suspense>
-    ),
   },
 ]);
 

@@ -21,19 +21,20 @@ const Signup = () => {
   return (
     <form
       onSubmit={handleSubmit(handler)}
-      className="w-full sm:w-[600px] p-4 bg-noteoo-200 rounded-lg flex flex-col gap-4 tracking-wider shadow-xl"
+      className="w-full sm:w-[600px] p-4 bg-noteoo-200 rounded-lg flex flex-col gap-4 tracking-wider shadow-xl text-zinc-800"
     >
       <div className="mb-5">
-        <h1 className="text-5xl text-center font-[gilroy-bold] mb-1">
-          Noteoo
-        </h1>
+        <h1 className="text-5xl text-center font-[gilroy-bold] mb-1">Noteoo</h1>
 
-        <h2 className="text-lg text-center leading-[1.1] text-zinc-700">Sign up and start capturing ideas!</h2>
+        <h2 className="text-lg text-center leading-[1.1] text-zinc-700">
+          Sign up and start capturing ideas!
+        </h2>
       </div>
 
       <input
         type="text"
         placeholder="Enter your username"
+        autoComplete="off"
         className="w-full border-2 border-noteoo-300 rounded-lg p-2 outline-none focus:border-blue-400 focus:shadow-[0px_0px_10px_#BB9AB1]"
         {...register("username", { required: true })}
       />
@@ -47,6 +48,7 @@ const Signup = () => {
       <input
         type="email"
         placeholder="Enter your email"
+        autoComplete="off"
         className="w-full border-2 border-noteoo-300 rounded-lg p-2 outline-none focus:border-blue-400 focus:shadow-[0px_0px_10px_#BB9AB1]"
         {...register("email", { required: true })}
       />

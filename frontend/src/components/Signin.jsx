@@ -21,7 +21,7 @@ const Signin = () => {
   return (
     <form
       onSubmit={handleSubmit(handler)}
-      className="w-full sm:w-[600px] p-4 bg-noteoo-200 rounded-lg flex flex-col gap-4 tracking-wider shadow-xl"
+      className="w-full sm:w-[600px] p-4 bg-noteoo-200 rounded-lg flex flex-col gap-4 tracking-wider shadow-xl text-zinc-800"
     >
       <div className="mb-5">
         <h1 className="text-5xl text-center font-[gilroy-bold] mb-1">

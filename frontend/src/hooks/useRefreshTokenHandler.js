@@ -29,16 +29,16 @@ const useRefreshTokenHandler = (intervalSeconds) => {
   useEffect(() => {
     if (!token) {
       handler();
+    } else {
+      const tokenInterval = setInterval(() => {
+        handler();
+      }, intervalSeconds);
+
+      return () => {
+        clearInterval(tokenInterval);
+      };
     }
-
-    const tokenInterval = setInterval(() => {
-      handler();
-    }, intervalSeconds);
-
-    return () => {
-      clearInterval(tokenInterval);
-    };
-  }, [token, intervalSeconds]);
+  }, []);
 
   return null;
 };
