@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { setIsSidebarCollapsed } from "../store/reducers/app.slice";
 
 const Header = () => {
-  console.log("gg");
   const dispatch = useDispatch();
 
   const toggleSidebarHandler = () => dispatch(setIsSidebarCollapsed());
