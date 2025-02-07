@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 
 import { setIsSigninFormVisible } from "../store/reducers/app.slice";
+import useSigninHandler from "../hooks/useSigninHandler";
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -13,15 +14,13 @@ const Signin = () => {
     formState: { errors },
   } = useForm();
 
-  const submitHandler = (data) => {
-    console.log(data);
-  };
+  const { handler, loading } = useSigninHandler(reset);
 
   const toggleFormHandler = () => dispatch(setIsSigninFormVisible(false));
 
   return (
     <form
-      onSubmit={handleSubmit(submitHandler)}
+      onSubmit={handleSubmit(handler)}
       className="w-full sm:w-[600px] p-4 bg-noteoo-200 rounded-lg flex flex-col gap-4 tracking-wider shadow-xl"
     >
       <div className="mb-5">
@@ -62,9 +61,10 @@ const Signin = () => {
 
       <button
         type="submit"
+        disabled={loading}
         className="bg-noteoo-400 text-white rounded-lg p-3 tracking-widest cursor-pointer duration-300 hover:bg-noteoo-500 mt-2"
       >
-        Sign in
+        {loading ? "Loading...." : "Sign in"}
       </button>
 
       <p
