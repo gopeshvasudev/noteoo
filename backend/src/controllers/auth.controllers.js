@@ -57,7 +57,7 @@ const signupHandler = async (req, res) => {
       })
       .json({
         success: true,
-        message: "Welcome to Say-It Notes",
+        message: `Welcome ${newUser.username} on Noteoo.`,
         accessToken,
       });
   } catch (error) {
