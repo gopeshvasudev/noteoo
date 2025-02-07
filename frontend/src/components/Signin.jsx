@@ -1,6 +1,11 @@
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+
+import { setIsSigninFormVisible } from "../store/reducers/app.slice";
 
 const Signin = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     reset,
@@ -12,16 +17,20 @@ const Signin = () => {
     console.log(data);
   };
 
+  const toggleFormHandler = () => dispatch(setIsSigninFormVisible(false));
+
   return (
     <form
       onSubmit={handleSubmit(submitHandler)}
       className="w-full sm:w-[600px] p-4 bg-noteoo-200 rounded-lg flex flex-col gap-4 tracking-wider shadow-xl"
     >
       <div className="mb-5">
-        <h2 className="text-2xl text-center">Welcome back to</h2>
+        <h2 className="text-xl text-center">
+          Welcome back, Let’s organize your notes with
+        </h2>
 
-        <h1 className="text-5xl text-center font-[gilroy-bold] leading-[.7]">
-          Noteoo
+        <h1 className="text-5xl text-center font-[gilroy-bold] leading-[.8]">
+          Noteoo.
         </h1>
       </div>
 
@@ -58,7 +67,10 @@ const Signin = () => {
         Sign in
       </button>
 
-      <p className="text-sm text-center text-noteoo-500 cursor-pointer">
+      <p
+        onClick={toggleFormHandler}
+        className="text-sm text-center text-noteoo-500 cursor-pointer outline-none focus:bg-noteoo-500"
+      >
         Don't have an account?
         <span className="text-zinc-900"> Sign up now.</span>
       </p>

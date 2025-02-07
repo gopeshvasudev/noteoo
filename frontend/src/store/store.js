@@ -6,3 +6,5 @@ const store = configureStore({
     app: appReducer,
   },
 });
+
+export default store;
