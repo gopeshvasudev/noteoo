@@ -9,6 +9,7 @@ import store from "./store/store.js";
 
 const Home = lazy(() => import("./pages/Home.jsx"));
 const Authenticate = lazy(() => import("./pages/Authenticate.jsx"));
+const CreateNote = lazy(() => import("./pages/CreateNote.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<h1>Loading....</h1>}>
             <Home />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/note/create",
+        element: (
+          <Suspense fallback={<h1>Loading....</h1>}>
+            <CreateNote />
           </Suspense>
         ),
       },

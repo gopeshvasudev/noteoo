@@ -1,8 +1,8 @@
 import React from "react";
 import { Toaster } from "react-hot-toast";
-import { Outlet } from "react-router-dom";
 
 import useRefreshTokenHandler from "./hooks/useRefreshTokenHandler";
+import Body from "./components/Body";
 
 const App = () => {
   useRefreshTokenHandler(8 * 1000);
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <>
       <Toaster />
-      <Outlet />
+      <Body />
     </>
   );
 };
