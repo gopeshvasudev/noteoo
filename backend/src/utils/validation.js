@@ -1,7 +1,8 @@
 import validator from "validator";
 import HttpError from "./errorClass.js";
 
-export const signupValidator = (req) => {
+//Signing up user validations
+const signupValidator = (req) => {
   const { username, email, password } = req.body;
 
   // Username validation
@@ -53,3 +54,32 @@ export const signupValidator = (req) => {
     );
   }
 };
+
+//Create note validations
+const createNoteValidator = (req) => {
+  const { title, content } = req.body;
+
+  //Title validations
+  if (!title || validator.isEmpty(title, { ignore_whitespace: true })) {
+    throw new HttpError(400, "Title cannot be empty!");
+  }
+
+  if (!validator.isLength(title, { min: 2, max: 100 })) {
+    throw new HttpError(400, "Title length must be between 2 to 100");
+  }
+
+  //Note content validations
+  if (!content || validator.isEmpty(content, { ignore_whitespace: true })) {
+    throw new HttpError(400, "Content is required");
+  }
+
+  if (!validator.isLength(content, { min: 20 })) {
+    throw new HttpError(400, "Content length must be atleast 20");
+  }
+
+  if (validator.isLength(content, { max: 2000 })) {
+    throw new HttpError(400, "Content length must be below 2000");
+  }
+};
+
+export { signupValidator, createNoteValidator };

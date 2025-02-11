@@ -5,11 +5,11 @@ const noteSchema = new mongoose.Schema(
     title: {
       type: String,
       required: [true, "Title is required"],
-      minLength: 10,
+      minLength: 2,
       maxLength: 100,
       trim: true,
     },
-    
+
     content: {
       type: String,
       required: [true, "Note content is required"],

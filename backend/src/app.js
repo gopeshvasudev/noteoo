@@ -5,6 +5,7 @@ import cors from "cors";
 
 import { connectToDatabase } from "./config/database.connection.js";
 import authRouter from "./routes/auth.routes.js";
+import noteRouter from "./routes/note.routes.js";
 config();
 
 const app = express();
@@ -23,6 +24,7 @@ app.use(
 
 //Routes
 app.use("/api/v1/auth/", authRouter);
+app.use("/api/v1/note", noteRouter);
 
 app.listen(PORT, () => {
   connectToDatabase();
