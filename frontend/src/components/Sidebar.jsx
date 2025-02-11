@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { sidebarLinksData } from "../utils/constants";
+import { FaPlus } from "react-icons/fa";
 
 const Sidebar = () => {
   const isSidebarCollapsed = useSelector(
@@ -15,11 +16,21 @@ const Sidebar = () => {
       }`}
     >
       <nav className="flex flex-col gap-2">
+        <Link
+          to={"/note/create"}
+          className="py-4 bg-noteoo-300 tracking-wider rounded-xl flex items-center gap-2 text-sm duration-300 justify-center mb-5 hover:tracking-widest"
+        >
+          <span className="text-base">
+            <FaPlus />
+          </span>
+          {!isSidebarCollapsed && "Create note"}
+        </Link>
+
         {sidebarLinksData?.map((link) => (
-          <Link
+          <NavLink
             key={link.name}
             to={link.path}
-            className={`p-3 bg-noteoo-300 rounded-lg flex items-center gap-2 text-sm duration-300 border-2 border-noteoo-300 hover:bg-transparent ${
+            className={`p-3 flex items-center gap-2 text-sm border-b-2 border-noteoo-300 duration-100 hover:border-b-[5px] ${
               isSidebarCollapsed ? "justify-center" : "justify-start"
             }`}
           >
@@ -28,7 +39,7 @@ const Sidebar = () => {
             </span>
 
             {!isSidebarCollapsed && link.name}
-          </Link>
+          </NavLink>
         ))}
       </nav>
     </aside>

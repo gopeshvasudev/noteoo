@@ -3,7 +3,7 @@ import { TiStarFullOutline } from "react-icons/ti";
 
 const sidebarLinksData = [
   {
-    name: "Home",
+    name: "All notes",
     path: "/",
     icon: AiFillHome,
   },
