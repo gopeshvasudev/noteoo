@@ -64,8 +64,12 @@ const createNoteValidator = (req) => {
     throw new HttpError(400, "Title cannot be empty!");
   }
 
-  if (!validator.isLength(title, { min: 2, max: 100 })) {
-    throw new HttpError(400, "Title length must be between 2 to 100");
+  if (!validator.isLength(title, { min: 2 })) {
+    throw new HttpError(400, "Title length must be atleast 2");
+  }
+
+  if (!validator.isLength(title, { max: 200 })) {
+    throw new HttpError(400, "Title length must be below 200");
   }
 
   //Note content validations
@@ -77,8 +81,8 @@ const createNoteValidator = (req) => {
     throw new HttpError(400, "Content length must be atleast 20");
   }
 
-  if (validator.isLength(content, { max: 2000 })) {
-    throw new HttpError(400, "Content length must be below 2000");
+  if (!validator.isLength(content, { max: 5000 })) {
+    throw new HttpError(400, "Content length must be below 5000");
   }
 };
 
