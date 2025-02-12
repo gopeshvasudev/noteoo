@@ -9,7 +9,7 @@ const sidebarLinksData = [
   },
   {
     name: "Favourites",
-    path: "/favourites",
+    path: "/note/favourite",
     icon: TiStarFullOutline,
   },
 ];

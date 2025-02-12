@@ -12,7 +12,7 @@ const Home = () => {
   }, []);
 
   return (
-    <section className="flex flex-col gap-2 w-full h-full">
+    <section className="w-full h-full">
       <div className="overflow-y-auto w-full max-h-full flex flex-wrap items-start justify-center gap-5 pb-2">
         {allNotes?.map((note) => (
           <NoteCard key={note._id} data={note} />

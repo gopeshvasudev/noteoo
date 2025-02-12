@@ -10,6 +10,7 @@ import store from "./store/store.js";
 const Home = lazy(() => import("./pages/Home.jsx"));
 const Authenticate = lazy(() => import("./pages/Authenticate.jsx"));
 const CreateNote = lazy(() => import("./pages/CreateNote.jsx"));
+const FavouriteNotes = lazy(() => import("./pages/FavouriteNotes.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<h1>Loading....</h1>}>
             <Authenticate />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/note/favourite",
+        element: (
+          <Suspense fallback={<h1>Loading....</h1>}>
+            <FavouriteNotes />
           </Suspense>
         ),
       },

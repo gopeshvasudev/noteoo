@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 
 import axiosInstance from "../utils/axiosInstance";
-import { setAllNotes } from "../store/reducers/note.slice";
+import { setAllNotes, setFavouriteNotes } from "../store/reducers/note.slice";
 
 const useGetNotes = () => {
   const [loading, setLoading] = useState(false);
@@ -22,7 +22,11 @@ const useGetNotes = () => {
       });
 
       if (res && res.data && res.data.success) {
-        dispatch(setAllNotes(res?.data?.notes));
+        if (noteType === "all") {
+          dispatch(setAllNotes(res?.data?.notes));
+        } else {
+          dispatch(setFavouriteNotes(res?.data?.notes));
+        }
       }
     } catch (error) {
       if (error && error.response && error.response.data) {
