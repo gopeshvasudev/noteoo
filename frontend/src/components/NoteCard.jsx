@@ -1,8 +1,10 @@
 import { TiStarFullOutline, TiStarOutline } from "react-icons/ti";
 import { HiDotsHorizontal } from "react-icons/hi";
+import useMarkNoteAsFavourite from "../hooks/useMarkNoteAsFavourite";
 
 const NoteCard = ({ data }) => {
   const { title, content, isFavourite } = data;
+  const { handler: markFavouriteHandler } = useMarkNoteAsFavourite();
 
   return (
     <div className="p-3 rounded-2xl bg-noteoo-200 w-[235px] min-h-[280px] flex flex-col gap-3 shadow-md tracking-wide">
@@ -13,7 +15,10 @@ const NoteCard = ({ data }) => {
       </div>
 
       <div className="flex items-center justify-end gap-2">
-        <span className="p-1 rounded-full bg-noteoo-300 text-xl">
+        <span
+          onClick={() => markFavouriteHandler(data?._id)}
+          className="p-1 rounded-full bg-noteoo-300 text-xl"
+        >
           {isFavourite ? <TiStarFullOutline /> : <TiStarOutline />}
         </span>
 
