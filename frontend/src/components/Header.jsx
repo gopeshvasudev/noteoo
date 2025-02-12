@@ -1,6 +1,7 @@
 import { MdOutlineMenu } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { setIsSidebarCollapsed } from "../store/reducers/app.slice";
 
@@ -19,7 +20,9 @@ const Header = () => {
           <MdOutlineMenu />
         </span>
 
-        <h1 className="text-4xl font-[gilroy-bold]">Noteoo</h1>
+        <h1 className="text-4xl font-[gilroy-bold]">
+          <Link to={"/"}>Noteoo</Link>
+        </h1>
       </div>
 
       <div>

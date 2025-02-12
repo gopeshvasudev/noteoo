@@ -23,6 +23,11 @@ const noteSchema = new mongoose.Schema(
       ref: "User",
       required: [true, "Author is required"],
     },
+
+    isFavourite: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
