@@ -35,16 +35,16 @@ const createNoteHandler = async (req, res) => {
 
 const getNotesHandler = async (req, res) => {
   try {
-    const { favouriteStatus } = req.params;
+    const { noteType } = req.params;
     const { _id: userId } = req.user;
 
-    if (!["favourite", "all"].includes(favouriteStatus)) {
-      throw new HttpError(400, `Invalid status type: ${favouriteStatus}`);
+    if (!["favourite", "all"].includes(noteType)) {
+      throw new HttpError(400, `Invalid status type: ${noteType}`);
     }
 
     let notes = [];
 
-    if (favouriteStatus === "all") {
+    if (noteType === "all") {
       notes = await noteModel.find({
         author: userId,
       });

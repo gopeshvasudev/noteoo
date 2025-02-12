@@ -12,6 +12,6 @@ const router = express.Router();
 router.post("/create", authenticateUser, createNoteHandler);
 
 //Get notes
-router.get("/:favouriteStatus", authenticateUser, getNotesHandler);
+router.get("/:noteType", authenticateUser, getNotesHandler);
 
 export default router;
