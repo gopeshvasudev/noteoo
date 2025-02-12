@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import axiosInstance from "../utils/axiosInstance";
 import { setAllNotes } from "../store/reducers/note.slice";
@@ -8,13 +8,18 @@ import { setAllNotes } from "../store/reducers/note.slice";
 const useGetNotes = () => {
   const [loading, setLoading] = useState(false);
 
+  const token = useSelector((store) => store.token.token);
   const dispatch = useDispatch();
 
   const handler = async (noteType) => {
     try {
       setLoading(true);
 
-      const res = await axiosInstance.get(`/note/${noteType}`);
+      const res = await axiosInstance.get(`/note/${noteType}`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
 
       if (res && res.data && res.data.success) {
         dispatch(setAllNotes(res?.data?.notes));
