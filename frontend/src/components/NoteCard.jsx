@@ -5,7 +5,7 @@ const NoteCard = ({ data }) => {
   const { title, content, isFavourite } = data;
 
   return (
-    <div className="p-3 rounded-2xl bg-noteoo-200 w-[235px] min-h-[280px] flex flex-col gap-3 shadow-lg tracking-wide">
+    <div className="p-3 rounded-2xl bg-noteoo-200 w-[235px] min-h-[280px] flex flex-col gap-3 shadow-md tracking-wide">
       <h6 className="text-lg line-clamp-2 leading-[1.2] pl-1">{title}</h6>
 
       <div className="w-full h-[180px] bg-noteoo-100 rounded-2xl overflow-hidden p-2">

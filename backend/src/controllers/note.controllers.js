@@ -65,4 +65,34 @@ const getNotesHandler = async (req, res) => {
   }
 };
 
-export { createNoteHandler, getNotesHandler };
+const markNoteAsFavouriteHandler = async (req, res) => {
+  try {
+    const { noteId } = req.params;
+
+    const note = await noteModel.findById(noteId);
+
+    if (!note) {
+      throw new HttpError(404, "Note not found");
+    }
+
+    if (note.isFavourite === false) {
+      note.isFavourite = true;
+    } else {
+      note.isFavourite = false;
+    }
+
+    await note.save();
+
+    return res.status(200).json({
+      success: true,
+      message: note.isFavourite
+        ? "Marked note as favourite successfully"
+        : "Marked note as unfavourite successfully",
+      note,
+    });
+  } catch (error) {
+    return errorHandler(res, error.statusCode, error.message);
+  }
+};
+
+export { createNoteHandler, getNotesHandler, markNoteAsFavouriteHandler };
