@@ -8,7 +8,8 @@ const useMarkNoteAsFavourite = () => {
   const token = useSelector((store) => store.token.token);
   const { handler: getNotesHandler } = useGetNotes();
 
-  const handler = async (noteId) => {
+  const handler = async (noteId, pathName) => {
+    console.log(pathName);
     try {
       const res = await axiosInstance.post(
         `/note/favourite/${noteId}`,
@@ -21,7 +22,11 @@ const useMarkNoteAsFavourite = () => {
       );
 
       if (res && res.data && res.data.success) {
-        getNotesHandler("all");
+        if (pathName === "/") {
+          getNotesHandler("all");
+        } else {
+          getNotesHandler("favourite");
+        }
       }
     } catch (error) {
       if (error && error.response && error.response.data) {
