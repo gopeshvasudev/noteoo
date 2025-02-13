@@ -13,11 +13,13 @@ const NoteCard = ({ data }) => {
   const { handler: markFavouriteHandler } = useMarkNoteAsFavourite();
 
   return (
-    <div className="p-3 rounded-2xl bg-noteoo-200 w-[235px] min-h-[280px] flex flex-col gap-3 shadow-md tracking-wide">
-      <h6 className="text-lg line-clamp-2 leading-[1.2] pl-1">{title}</h6>
+    <div className="p-3 rounded-2xl bg-noteoo-200 w-[235px] h-[280px] flex flex-col gap-3 shadow-md tracking-wide">
+      <div className="w-full h-[45px]">
+        <h6 className="text-lg line-clamp-2 leading-[1.2] pl-1">{title}</h6>
+      </div>
 
-      <div className="w-full h-[180px] bg-noteoo-100 rounded-2xl overflow-hidden p-2">
-        <p className="text-zinc-700 line-clamp-[8] text-sm">{content}</p>
+      <div className="w-full h-[160px] bg-noteoo-100 rounded-2xl overflow-hidden p-2">
+        <p className="text-zinc-700 line-clamp-[7] text-sm">{content}</p>
       </div>
 
       <div className="flex items-center justify-end gap-2">

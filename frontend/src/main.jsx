@@ -11,6 +11,7 @@ const Home = lazy(() => import("./pages/Home.jsx"));
 const Authenticate = lazy(() => import("./pages/Authenticate.jsx"));
 const CreateNote = lazy(() => import("./pages/CreateNote.jsx"));
 const FavouriteNotes = lazy(() => import("./pages/FavouriteNotes.jsx"));
+const ViewNote = lazy(() => import("./pages/ViewNote.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<h1>Loading....</h1>}>
             <FavouriteNotes />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/note/:noteId",
+        element: (
+          <Suspense fallback={<h1>Loading....</h1>}>
+            <ViewNote />
           </Suspense>
         ),
       },

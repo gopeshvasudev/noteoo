@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import useGetNotes from "../hooks/useGetNotes";
 import NoteCardSkeleton from "../components/NoteCardSkeleton";
@@ -12,16 +13,25 @@ const FavouriteNotes = () => {
   useEffect(() => {
     handler("favourite");
   }, []);
+
   return (
     <section className="w-full h-full">
-      <div className="w-full max-h-full pb-2 flex flex-wrap gap-5 justify-center items-start overflow-y-auto">
+      <div
+        className={`w-full max-h-full pb-2 flex flex-wrap gap-5 justify-center items-start ${
+          loading ? "overflow-y-hidden" : "overflow-y-auto"
+        }`}
+      >
         {loading ? (
           [...Array(5)].map((_, index) => <NoteCardSkeleton key={index} />)
         ) : favouriteNotes.length > 0 ? (
-          favouriteNotes?.map((note) => <NoteCard key={note._id} data={note} />)
+          favouriteNotes?.map((note) => (
+            <Link to={`/note/${note._id}`} key={note._id}>
+              <NoteCard data={note} />
+            </Link>
+          ))
         ) : (
           <h6 className="text-2xl text-center">
-            You didn't mark any note as favourite!
+            You did not mark any note as favourite!
           </h6>
         )}
       </div>

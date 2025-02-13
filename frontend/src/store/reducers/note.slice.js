@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   allNotes: [],
   favouriteNotes: [],
+  singleNote: {},
 };
 
 const noteSlice = createSlice({
@@ -16,8 +17,12 @@ const noteSlice = createSlice({
     setFavouriteNotes(state, action) {
       state.favouriteNotes = action.payload;
     },
+
+    setNote(state, action) {
+      state.singleNote = action.payload;
+    },
   },
 });
 
 export default noteSlice.reducer;
-export const { setAllNotes, setFavouriteNotes } = noteSlice.actions;
+export const { setAllNotes, setFavouriteNotes, setNote } = noteSlice.actions;
