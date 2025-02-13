@@ -29,6 +29,7 @@ const createNoteHandler = async (req, res) => {
       message: "Note created successfully",
     });
   } catch (error) {
+    console.error("Create note error: " + error.message);
     return errorHandler(res, error.statusCode, error.message);
   }
 };
@@ -61,6 +62,7 @@ const getNotesHandler = async (req, res) => {
       notes,
     });
   } catch (error) {
+    console.error("Get notes error: " + error.message);
     return errorHandler(res, error.statusCode, error.message);
   }
 };
@@ -91,8 +93,35 @@ const markNoteAsFavouriteHandler = async (req, res) => {
       note,
     });
   } catch (error) {
+    console.error("Mark note as favourite error: " + error.message);
     return errorHandler(res, error.statusCode, error.message);
   }
 };
 
-export { createNoteHandler, getNotesHandler, markNoteAsFavouriteHandler };
+const getSingleNoteHandler = async (req, res) => {
+  try {
+    const { noteId } = req.params;
+
+    const note = await noteModel.findById(noteId);
+
+    if (!note) {
+      throw new HttpError(404, "Note not found");
+    }
+
+    return res.status(200).json({
+      success: false,
+      message: "Note fetched successfully",
+      note,
+    });
+  } catch (error) {
+    console.error("Get single note error: " + error.message);
+    return errorHandler(res, error.statusCode, error.message);
+  }
+};
+
+export {
+  createNoteHandler,
+  getNotesHandler,
+  markNoteAsFavouriteHandler,
+  getSingleNoteHandler,
+};

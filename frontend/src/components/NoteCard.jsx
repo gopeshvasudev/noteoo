@@ -22,13 +22,17 @@ const NoteCard = ({ data }) => {
 
       <div className="flex items-center justify-end gap-2">
         <span
+          title="Favourite"
           onClick={() => markFavouriteHandler(data?._id, pathName)}
-          className="p-1 rounded-full bg-noteoo-300 text-xl"
+          className="p-1 rounded-full bg-noteoo-300 text-xl cursor-pointer"
         >
           {isFavourite ? <TiStarFullOutline /> : <TiStarOutline />}
         </span>
 
-        <span className="p-1 rounded-full text-xl bg-noteoo-300">
+        <span
+          title="Options"
+          className="p-1 rounded-full text-xl bg-noteoo-300 cursor-pointer"
+        >
           <HiDotsHorizontal />
         </span>
       </div>
